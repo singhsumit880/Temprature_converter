@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@652&display=swap" rel="stylesheet">
+	<style>
+		body{
+			overflow-y: hidden;
+		}
+		.container{
+			background-image: url(black.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 70%;
+			margin: 13%;
+			border-radius: 20px;
+			margin-top: 8%;
+		}
+		.main{
+			padding: 8%;
+			padding-left: 25%;
+			font-family: 'Cherry Swash', cursive;
+			font-size: 20px;
+			color: lime;
+		}
+		input[type="text"] {
+        	border-radius: 10px;
+        	height: 40px;
+        	width: auto;
+        	font-size: 20px;
+        	font-family: 'Heebo', sans-serif;
+        	color: #1500ff;
+        	outline: none;
+		}
+		#result{
+			width: 400px;
+			height: 50px;
+			text-transform: inherit;
+			font-size: 15px;
+		}
+		#initialtemp {
+    		
+    		border-radius: 20px;
+    		padding: 5px;
+    		text-align: center;
+    		font-size: 15px;
+        	font-family: 'Cherry Swash', cursive;
+        	outline: none;
+        }
+        #initialtemp:hover{
+        	background: white;
+			background-image: linear-gradient(to right top, #0eff0e, #00e2ae, #00bbff, #0088ff, #2100ff);
+			text-align: center;
+			color: black;
+        }
+        button{
+        	border-radius: 20px;
+    		padding: 5px;
+    		text-decoration: none;
+    		font-size: 15px;
+        	font-family: 'Cherry Swash', cursive;
+        	outline: none;
+        	color: red;
+        	text-align: center;
+        	tab-size:2;
+        	padding-right: 10px;
+        }
+        button:hover{
+        	background-image: linear-gradient(to right top, #0eff0e, #00e2ae, #00bbff, #0088ff, #2100ff);
+        }
+        i{
+        	padding-left:10px;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+		<h1>Temperature Converter</h1>
+	  Enter the Temperature:
+	  <input type="text" id="tempinput" />
+		  <select  id="initialtemp">
+		  	<option value="">Select</option>
+		    <option value="c" >C</option>
+		    <option value="f">F</option>
+		    <option value="k">K</option>
+		  </select>
+	  		<br/>
+	  		<br/>Result:
+	  		<input type="text"  id="result"/>
+	  		<button type="button" onclick="convert()"> <i class="fa fa-refresh fa-spin" style="font-size:24px"></i>Convert</button>
+		</div>
+	</div>
+   <script>
+   	function convert() {
+    var temp = document.getElementById("initialtemp");
+    var valueSelected = temp.value;
+
+    if (valueSelected == "c") {
+      var convertedF = cToF();
+      var convertedK = cToK();
+
+      return document.getElementById("result").value = convertedF + "F" + " = " + convertedK + "K";
+    } else if (valueSelected == "f") {
+      var convertedC = fToC();
+      var convertedK = fToK();
+
+      return document.getElementById("result").value = convertedC + "C" + " = " + convertedK + "K";
+    } else if (valueSelected == "k") {
+      var convertedF = kToF();
+      var convertedC = kToC();
+      return document.getElementById("result").value = convertedF + "F" + " = " + convertedC + "C";
+    }
+
+ 	 }
+		function cToF() {
+		  var c = document.getElementById("tempinput").value;
+		  return (c * 9 / 5) + 32;
+		}
+		function cToK() {
+		    var c = document.getElementById("tempinput").value;
+		    return parseInt(c)+ 273.15;
+		  }
+		function fToC() {
+		  var f = document.getElementById("tempinput").value;
+		  return (f - 32) * 5 / 9;
+		}
+		function fToK() {
+		    var f = document.getElementById("tempinput").value;
+		    return (f - 32) * 5 / 9 + 273.15;
+		  }
+		function kToC() {
+		  var k = document.getElementById("tempinput").value;
+		  return k - 273.15;
+		}
+
+		function kToF() {
+		  var k = document.getElementById("tempinput").value;
+		  return (k - 273.15) * 9 / 5 + 32;
+		}
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
